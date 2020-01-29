@@ -52,7 +52,7 @@ export class UserService {
 
   getUserProfile() {
     // return this.http.get(BaseURI + 'auth/getusers');
-    return this.http.get(BaseURI + 'profile');
+    return this.http.get(BaseURI + 'auth/profile');
   }
 
    tokenExists() : boolean{

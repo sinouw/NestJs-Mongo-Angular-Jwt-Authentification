@@ -11,6 +11,6 @@ export class AdminService {
 
 
   getHelloAdmin(){
-    return this.http.get(BaseURI+'admin/gethello',{responseType: 'text'})
+    return this.http.get(BaseURI+'auth/gethello',{responseType: 'text'})
   }
 }

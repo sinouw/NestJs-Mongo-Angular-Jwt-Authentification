@@ -16,9 +16,6 @@ export class AuthGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
 
-     
-      
-      
     if (this.service.tokenExists() == false) {
       this.router.navigate(['/user/login'], { queryParams: { returnUrl: state.url } });
       return false;
@@ -28,7 +25,6 @@ export class AuthGuard implements CanActivate {
         this.router.navigateByUrl('/forbidden');
         return false;
     }
-
       return true;
 
     }
