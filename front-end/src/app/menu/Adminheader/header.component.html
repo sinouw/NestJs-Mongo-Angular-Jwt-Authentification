@@ -3,13 +3,20 @@
     <div class="mx-auto order-0">
         <a class="navbar-brand mx-auto" href="home">Casa Loca</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
+            <span class="navbar-toggler-icon"></span>
+        </button>
     </div>
     <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <button class="btn btn-dark my-2 my-sm-0" (click)="onLogout()">Logout</button>
+                <button mat-mini-fab style="margin-right:30px" color="dark" (click)="RouterGoHome()">
+                    <mat-icon routerLinkActive="router-link-active">home</mat-icon>
+                </button>
+            </li>
+            <li class="nav-item">
+                <button mat-mini-fab (click)="onLogout()" color="dark">
+                    <mat-icon >logout</mat-icon>
+                </button>
             </li>
         </ul>
     </div>

@@ -10,17 +10,23 @@ import { SideNavBarService } from '../menu/side-nav-bar/side-nav-bar.service';
 
 })
 export class AdminPanelComponent implements OnInit {
-  helloMessage: string;
+  
   subscription: Subscription;
+
   compName: any = "Profile";
+  helloMessage: string;
+
   constructor(private adminService : AdminService,
-    private sideBarService: SideNavBarService) 
+    private sideBarService: SideNavBarService,
+    private router : Router) 
   {
     // subscribe to  component name
     this.subscription = this.sideBarService.getcompName().subscribe(compName => {
       if (compName) {
-        this.compName=compName;
-        console.log(this.compName.name);
+        if (compName.name=="Go to site") {
+            this.RouterGoHome()
+        }
+        this.compName=compName.name;
       } 
         else {
           // clear compNames
@@ -45,6 +51,10 @@ export class AdminPanelComponent implements OnInit {
     err=>{
      console.log(err);
   })
+  }
+
+  RouterGoHome(){
+    this.router.navigate(['/home']);
   }
 
 }

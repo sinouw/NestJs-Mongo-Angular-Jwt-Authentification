@@ -1,1 +1,42 @@
-<p>globalheader works!</p>
+<nav class="navbar navbar-expand-md navbar-light bg-light">
+
+    <div class="mx-auto order-0">
+
+        <a class="navbar-brand mx-auto" href="/home">
+            Casa Loca
+            <mat-icon routerLinkActive="router-link-active">home</mat-icon></a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+    </div>
+    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2" *ngIf="isAdmin;else UserBlock">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <button mat-mini-fab style="margin-right:30px" color="dark" (click)="onAdmiProfile()">
+                            <mat-icon  routerLinkActive="router-link-active" >person</mat-icon>
+                          </button>
+                <!-- <button class="btn btn-dark my-2 my-sm-0" style="margin-right:30px" href="/adminpanel"><mat-icon> person_pin</mat-icon></button> -->
+            </li>
+            <li class="nav-item">
+                <button mat-mini-fab style="margin-right:30px" color="dark" (click)="onLogout()">
+                            <mat-icon  routerLinkActive="router-link-active" >logout</mat-icon>
+                          </button>
+                <!-- <button class="btn btn-dark my-2 my-sm-0" (click)="onLogout()">Logout</button> -->
+            </li>
+        </ul>
+    </div>
+    <ng-template #UserBlock>
+        <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+            <ul class="navbar-nav ml-auto">
+
+                <li class="nav-item">
+                    <button mat-mini-fab style="margin-right:30px" color="dark" (click)="onSignIn()">
+                        <mat-icon  routerLinkActive="router-link-active" >logout</mat-icon>
+                    </button>
+                    <!-- <button class="btn btn-dark my-2 my-sm-0" (click)="onLogout()">Logout</button> -->
+                </li>
+            </ul>
+        </div>
+    </ng-template>
+</nav>
