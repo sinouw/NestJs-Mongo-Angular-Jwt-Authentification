@@ -25,4 +25,13 @@ export class HousesService {
   createNewHouse(house : CreateHouseDto){
     return this.http.post(BaseURI+'houses/create',house)
   }
+
+  editHouseById(id : string , house : CreateHouseDto){
+    return this.http.post(BaseURI+'houses/update/'+id,house)
+  }
+
+  deleteHouseById(id : string){
+    return this.http.get(BaseURI+'houses/delete/'+id)
+  }
+
 }

@@ -36,7 +36,10 @@ export class AdminPanelComponent implements OnInit {
       console.log("redirected to : "+redirectUrl);
 
     }else{
+      
       this.RouterGetProfile()
+      this.compName="Profile"
+      // let componentRoute = redirectUrl.toLowerCase()
     }
     // subscribe to  component name
     this.subscription = this.sideBarService.getcompName().subscribe(compName => {
