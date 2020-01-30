@@ -10,10 +10,10 @@ import { RegistrationComponent } from './user/registration/registration.componen
 import { UserService } from './shared/user.service';
 import { LoginComponent } from './user/login/login.component';
 import { AuthInterceptor } from './auth/helper/auth.interceptor';
-import { ForbiddenComponent } from './forbidden/forbidden.component';
+import { ForbiddenComponent } from './extra/forbidden/forbidden.component';
 import { AdminPanelModule } from './admin-panel/admin-panel.module';
 import { MenuModule } from './menu/menu.module';
-import { NotfoundComponent } from './notfound/notfound.component';
+import { NotfoundComponent } from './extra/notfound/notfound.component';
 import { MyHomeComponent } from './my-home/my-home.component';
 
 

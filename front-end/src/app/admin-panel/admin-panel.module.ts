@@ -25,12 +25,15 @@ import { HousesListComponent } from './houses-list/houses-list.component';
 import { HousesDetailsComponent } from './houses-details/houses-details.component';
 import { ProfileComponent } from './profile/profile.component';
 import { MenuModule } from '../menu/menu.module';
+import { RouterModule } from '@angular/router';
+import { AdminAccountRoutes } from './admin-panel.routing';
 
 
 @NgModule({
   declarations: [AdminPanelComponent, HousesListComponent, HousesDetailsComponent, ProfileComponent],
   imports: [
     CommonModule,
+    RouterModule.forChild(AdminAccountRoutes),
     MatButtonModule,
       MatToolbarModule,
       MatIconModule,

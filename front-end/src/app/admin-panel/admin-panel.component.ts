@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AdminService } from '../shared/admin.service';
 import { Subscription } from 'rxjs';
 import { SideNavBarService } from '../menu/side-nav-bar/side-nav-bar.service';
+import { UserService } from '../shared/user.service';
 
 @Component({
   selector: 'app-admin-panel',
@@ -14,29 +15,39 @@ export class AdminPanelComponent implements OnInit {
   subscription: Subscription;
 
   compName: any = "Profile";
-  helloMessage: string;
+  helloMessage: string="";
+  isAdmin: any;
 
   constructor(private adminService : AdminService,
     private sideBarService: SideNavBarService,
-    private router : Router) 
+    private router : Router,
+    private service: UserService) 
   {
     // subscribe to  component name
     this.subscription = this.sideBarService.getcompName().subscribe(compName => {
       if (compName) {
         if (compName.name=="Go to site") {
             this.RouterGoHome()
+        }else{
+          this.compName=compName.name;
+          this.router.navigate(['/adminpanel/'+this.compName.toLowerCase()]);
         }
-        this.compName=compName.name;
       } 
         else {
           // clear compNames
           this.compName="";
         }
     });
+
+    let currentRoles =this.service.getDecodedToken().roles;
+    this.isAdmin = currentRoles.some(role => currentRoles.includes("admin"));
+    if (this.isAdmin) {
+      this.getmessage()
+    }
   }
    
   ngOnInit() {
-   this.getmessage()
+  //  this.getmessage()
   }
   ngOnDestroy() {
     // unsubscribe to ensure no memory leaks
