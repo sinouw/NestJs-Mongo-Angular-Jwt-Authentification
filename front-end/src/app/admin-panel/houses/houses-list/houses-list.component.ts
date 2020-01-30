@@ -15,14 +15,14 @@ import { BaseURI } from 'src/app/models/BaseURI.model';
 
 export class HousesListComponent implements OnInit {
 
-  buttonItems : string[] = ["Houses List" ,"Add House"]
+  buttonItems: string[] = ["Houses List", "Add House"]
 
-  constructor(private housesService : HousesService,
-    private http : HttpClient) {}
-  @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
-  @ViewChild(MatSort, {static: false}) sort: MatSort;
+  constructor(private housesService: HousesService,
+    private http: HttpClient) { }
+  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
+  @ViewChild(MatSort, { static: false }) sort: MatSort;
   dataSource = new MatTableDataSource();
-  displayedColumns: string[] = ['position','title', 'description', 'created_at','action'];
+  displayedColumns: string[] = ['position', 'title', 'description', 'created_at', 'action'];
 
   ngOnInit() {
     this.getAll()
@@ -32,16 +32,16 @@ export class HousesListComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
-  }
+    }
   }
 
-  getAll(){
+  getAll() {
     this.housesService.getAllHouses().subscribe(
-      (res:any) => {
+      (res: any) => {
         console.log(res);
-        
+
         this.dataSource = new MatTableDataSource(res);
-        this.dataSource.paginator = this.paginator;        
+        this.dataSource.paginator = this.paginator;
       },
       err => {
         console.log(err);
@@ -50,21 +50,32 @@ export class HousesListComponent implements OnInit {
   }
 
 
-  editHouse(houseId : string , index : number){
+  editHouse(houseId: string, index: number) {
     this.housesService.getHouseById(houseId)
-    .subscribe(
-      (res:any) => {
-        console.log(res);    
-      },
-      err => {
-        console.log(err);
-      },
-    );
+      .subscribe(
+        (res: any) => {
+          console.log(res);
+        },
+        err => {
+          console.log(err);
+        },
+      );
   }
 
-  deleteHouseById(houseId : string , index : number){
-    console.log(houseId,index);
-    
+  deleteHouseById(houseId: string, index: number) {
+    this.housesService.deleteHouseById(houseId)
+      .subscribe(
+        (res: any) => {
+          console.log(res);
+          this.dataSource.data.splice(index, 1);
+          this.dataSource = new MatTableDataSource(this.dataSource.data);
+          this.dataSource.paginator = this.paginator;
+        },
+        err => {
+          console.log(err);
+        },
+      );
+
   }
 
 }

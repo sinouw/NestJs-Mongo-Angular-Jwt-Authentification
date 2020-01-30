@@ -31,7 +31,7 @@ export class HousesService {
   }
 
   deleteHouseById(id : string){
-    return this.http.get(BaseURI+'houses/delete/'+id)
+    return this.http.delete(BaseURI+'houses/delete/'+id)
   }
 
 }

@@ -22,9 +22,11 @@ const routes: Routes = [
   {path:'home',component:MyHomeComponent},
   {path:'not-found',component:NotfoundComponent},
   {path:'forbidden',component:ForbiddenComponent},
-  {path:'adminpanel',loadChildren:()=>
-import('./admin-panel/admin-panel.module').then(m=>m.AdminPanelModule)},
-// component:AdminPanelComponent,canActivate:[AuthGuard]
+  {
+    path:'adminpanel',
+  loadChildren:()=>import('./admin-panel/admin-panel.module')
+  .then(m=>m.AdminPanelModule)
+},
   {
        path: '**',
        redirectTo: 'not-found'

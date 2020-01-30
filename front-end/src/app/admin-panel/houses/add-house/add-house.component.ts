@@ -3,6 +3,7 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { UserService } from 'src/app/shared/user.service';
 import { AdminService } from 'src/app/shared/admin.service';
 import { HousesService } from '../../services/houses.service';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -17,6 +18,7 @@ export class AddHouseComponent implements OnInit {
   constructor(private formGroup: FormBuilder,
     private usersService : UserService,
     private housesService : HousesService,
+    private toastr: ToastrService
     
     ) { }
   
@@ -31,12 +33,11 @@ export class AddHouseComponent implements OnInit {
   }
 
 
-  createHouse(){
-    // console.log(this.info.value);
-    
+  createHouse(){    
     this.housesService.createNewHouse(this.info.value)
     .subscribe(res=>{
       console.log(res);
+      this.toastr.success('New house created!', 'House Added successfully.');
     },
     err=>{
       console.log(err);
