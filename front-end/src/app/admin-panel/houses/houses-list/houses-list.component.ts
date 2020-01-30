@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HousesListComponent implements OnInit {
 
+  buttonItems : string[] = ["Houses List" ,"Add House"]
+
   constructor() { }
 
   ngOnInit() {

@@ -15,7 +15,7 @@ import { AdminPanelModule } from './admin-panel/admin-panel.module';
 import { MenuModule } from './menu/menu.module';
 import { NotfoundComponent } from './extra/notfound/notfound.component';
 import { MyHomeComponent } from './my-home/my-home.component';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -32,6 +32,7 @@ import { MyHomeComponent } from './my-home/my-home.component';
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
+    BrowserAnimationsModule, // required animations module,
     ToastrModule.forRoot({
       progressBar: true
     }),

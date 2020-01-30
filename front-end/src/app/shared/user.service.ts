@@ -43,6 +43,7 @@ export class UserService {
     var body = {
       username: this.formModel.value.username,
       password: this.formModel.value.Passwords.password,
+      roles:["user"]
     };
     console.log(body);
     return this.http.post(BaseURI + 'auth/register', body);

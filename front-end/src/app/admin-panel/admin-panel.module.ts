@@ -28,10 +28,12 @@ import { RouterModule } from '@angular/router';
 import { AdminAccountRoutes } from './admin-panel.routing';
 import { HousesComponent } from './houses/houses.component';
 import { HousesDetailsComponent } from './houses/houses-details/houses-details.component';
+import { ClientsComponent } from './clients/clients.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
-  declarations: [AdminPanelComponent, HousesListComponent, HousesDetailsComponent, ProfileComponent, HousesComponent],
+  declarations: [AdminPanelComponent, HousesListComponent, HousesDetailsComponent, ProfileComponent, HousesComponent, ClientsComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(AdminAccountRoutes),
@@ -53,7 +55,8 @@ import { HousesDetailsComponent } from './houses/houses-details/houses-details.c
       MatTableModule,
       MatPaginatorModule,
       MatCardModule,
-      MenuModule
+      MenuModule,
+      HttpClientModule
   ],
   exports:[
     MatButtonModule,

@@ -1,1 +1,16 @@
-<p>houses works!</p>
+<div class="row">
+    <div class="btn-group btn-group-toggle" *ngFor="let btnItem of buttonsList">
+        <button class="btn btn-secondary" [ngClass]="{'active':selectedComp == btnItem}" (click)="selectComponent(btnItem)">
+            {{btnItem}}
+        </button>
+    </div>
+</div>
+<div class="row">
+    <div *ngIf="listCompSelected;else houseDetails">
+        <app-houses-list></app-houses-list>
+    </div>
+
+</div>
+<ng-template #houseDetails>
+    <app-houses-details></app-houses-details>
+</ng-template>

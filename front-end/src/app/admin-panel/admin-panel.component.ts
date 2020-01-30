@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { AdminService } from '../shared/admin.service';
 import { Subscription } from 'rxjs';
 import { SideNavBarService } from '../menu/side-nav-bar/side-nav-bar.service';
@@ -14,15 +14,30 @@ export class AdminPanelComponent implements OnInit {
   
   subscription: Subscription;
 
-  compName: any = "Profile";
+  // compName: any = "Profile";
+  compName: any = "";
   helloMessage: string="";
   isAdmin: any;
 
   constructor(private adminService : AdminService,
     private sideBarService: SideNavBarService,
     private router : Router,
-    private service: UserService) 
+    private service: UserService,
+    private route: ActivatedRoute) 
   {
+    
+    let redirectUrl : string = (this.router.url).split("/")[2]
+    if(redirectUrl){
+      let componentRoute = redirectUrl.toLowerCase()
+      //to Upper the first Letter
+      this.compName=componentRoute.charAt(0).toUpperCase() + componentRoute.slice(1);
+      //redirect to the component at the url
+      this.router.navigate(['/adminpanel/'+componentRoute]);
+      console.log("redirected to : "+redirectUrl);
+
+    }else{
+      this.RouterGetProfile()
+    }
     // subscribe to  component name
     this.subscription = this.sideBarService.getcompName().subscribe(compName => {
       if (compName) {
@@ -66,6 +81,9 @@ export class AdminPanelComponent implements OnInit {
 
   RouterGoHome(){
     this.router.navigate(['/home']);
+  }
+  RouterGetProfile(){
+    this.router.navigate(['/adminpanel/profile']);
   }
 
 }

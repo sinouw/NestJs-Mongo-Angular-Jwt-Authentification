@@ -14,7 +14,7 @@ export class SideNavBarComponent implements OnInit {
   isAdmin: any;
   adminMenuItemsList : string[] =  ["Profile","Houses","Clients","Go to site"]
   userMenuItemsList : string[] =  ["Profile","Houses","Go to site"]
-  selectedCompName : string ="Profile"
+  selectedCompName : string =""
 
   constructor(private router: Router,
     private service: UserService,

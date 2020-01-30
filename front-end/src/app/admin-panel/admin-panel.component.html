@@ -12,21 +12,10 @@
             <div class="container" style="max-width: 90%;">
                 <div class="row">
                     <h1 class="display-4">{{compName}}</h1>
-                    <hr>
-                    <!-- <div class="col">
-                        <p class="lead" *ngIf="isAdmin==true;else elsebloc">{{helloMessage}}. </p>
-                        <router-outlet></router-outlet>
-                        <ng-template #elsebloc>
-                            <p class="lead">Welcome to the users Panel </p>
-                            <router-outlet></router-outlet>
 
-                        </ng-template>
-                    </div> -->
                 </div>
-                <div class="row">
-                    <router-outlet></router-outlet>
-                </div>
-
+                <hr>
+                <router-outlet></router-outlet>
             </div>
 
         </div>
