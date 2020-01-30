@@ -1,23 +1,41 @@
 import { Component, OnInit } from '@angular/core';
-import { HubConnection, HubConnectionBuilder } from '@aspnet/signalr';
-import { UserService } from '../shared/user.service';
 import { Router } from '@angular/router';
-import { parse } from 'path';
 import { AdminService } from '../shared/admin.service';
+import { Subscription } from 'rxjs';
+import { SideNavBarService } from '../menu/side-nav-bar/side-nav-bar.service';
 
 @Component({
   selector: 'app-admin-panel',
   templateUrl: './admin-panel.component.html',
-  styles: []
+
 })
 export class AdminPanelComponent implements OnInit {
   helloMessage: string;
-
-  constructor(private adminService : AdminService,private router: Router) { }
-
+  subscription: Subscription;
+  compName: any = "Profile";
+  constructor(private adminService : AdminService,
+    private sideBarService: SideNavBarService) 
+  {
+    // subscribe to  component name
+    this.subscription = this.sideBarService.getcompName().subscribe(compName => {
+      if (compName) {
+        this.compName=compName;
+        console.log(this.compName.name);
+      } 
+        else {
+          // clear compNames
+          this.compName="";
+        }
+    });
+  }
+   
   ngOnInit() {
    this.getmessage()
   }
+  ngOnDestroy() {
+    // unsubscribe to ensure no memory leaks
+    this.subscription.unsubscribe();
+    }
 
   getmessage(){
     this.adminService.getHelloAdmin()

@@ -9,6 +9,8 @@ import { UserService } from 'src/app/shared/user.service';
 })
 export class HeaderComponent implements OnInit {
   isAdmin: boolean;
+  navIsOpened: boolean=true;
+
 
   constructor(private router: Router,private service: UserService) { }
 
@@ -16,6 +18,16 @@ export class HeaderComponent implements OnInit {
     let currentRoles =this.service.getDecodedToken().roles;
     this.isAdmin = currentRoles.some(role => currentRoles.includes("admin"));
   }
+
+  openNav(){
+    this.navIsOpened = true;
+
+  }
+
+  closeNav(){
+    this.navIsOpened = false;
+  }
+
 
   onLogout() {
     localStorage.removeItem('token');

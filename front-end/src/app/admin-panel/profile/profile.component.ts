@@ -1,13 +1,13 @@
-import { UserService } from '../shared/user.service';
 import { Component, OnInit } from '@angular/core';
+import { UserService } from 'src/app/shared/user.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styles: []
+  selector: 'app-profile',
+  templateUrl: './profile.component.html',
+  styleUrls: ['./profile.component.css']
 })
-export class HomeComponent implements OnInit {
+export class ProfileComponent implements OnInit {
   userDetails;
 
   constructor(private router: Router, private service: UserService) { }

@@ -8,8 +8,10 @@ import * as jwt_decode from 'jwt-decode';
   providedIn: 'root'
 })
 export class UserService {
+  constructor(private fb: FormBuilder, private http: HttpClient) {
+   }
 
-  constructor(private fb: FormBuilder, private http: HttpClient) { }
+  
 
   formModel = this.fb.group({
     username: ['', Validators.required],

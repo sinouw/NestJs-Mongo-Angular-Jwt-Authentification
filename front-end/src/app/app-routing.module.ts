@@ -5,8 +5,10 @@ import { Routes, RouterModule } from '@angular/router';
 import { UserComponent } from './user/user.component';
 import { RegistrationComponent } from './user/registration/registration.component';
 import { LoginComponent } from './user/login/login.component';
-import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './auth/guard/auth.guard';
+import { NotfoundComponent } from './notfound/notfound.component';
+import { MyHomeComponent } from './my-home/my-home.component';
+// import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
   {path:'',redirectTo:'/user/login',pathMatch:'full'},
@@ -17,9 +19,14 @@ const routes: Routes = [
       { path: 'login', component: LoginComponent }
     ]
   },
-  {path:'home',component:HomeComponent,canActivate:[AuthGuard]},
+  {path:'home',component:MyHomeComponent},
+  {path:'not-found',component:NotfoundComponent},
   {path:'forbidden',component:ForbiddenComponent},
-  {path:'adminpanel',component:AdminPanelComponent,canActivate:[AuthGuard]}
+  {path:'adminpanel',component:AdminPanelComponent,canActivate:[AuthGuard]},
+  {
+       path: '**',
+       redirectTo: 'not-found'
+    }
 ];
 
 @NgModule({

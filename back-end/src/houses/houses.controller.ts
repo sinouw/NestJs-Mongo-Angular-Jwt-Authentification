@@ -18,7 +18,7 @@ export class HousesController {
     }
 
     // Retrieve houses list
-    @Get('houses')
+    @Get('getAll')
     async getAllHouse(@Res() res) {
         const houses = await this.houseService.getAllHouse();
         return res.status(HttpStatus.OK).json(houses);
