@@ -30,6 +30,7 @@ import { HousesComponent } from './houses/houses.component';
 import { HousesDetailsComponent } from './houses/houses-details/houses-details.component';
 import { ClientsComponent } from './clients/clients.component';
 import { HttpClientModule } from '@angular/common/http';
+import { HousesService } from './services/houses.service';
 
 
 @NgModule({
@@ -76,6 +77,7 @@ import { HttpClientModule } from '@angular/common/http';
       MatTableModule,
       MatPaginatorModule,
       MatCardModule
-  ]
+  ],
+  providers:[HousesService]
 })
 export class AdminPanelModule { }

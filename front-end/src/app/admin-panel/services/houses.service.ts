@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { BaseURI } from 'src/app/models/BaseURI.model';
 import { CreateHouseDto } from 'src/app/models/create-house-dto';
 
