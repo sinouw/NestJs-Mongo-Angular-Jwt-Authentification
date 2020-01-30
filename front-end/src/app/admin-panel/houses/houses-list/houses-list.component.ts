@@ -30,6 +30,9 @@ export class HousesListComponent implements OnInit {
 
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+  }
   }
 
   getAll(){
@@ -46,8 +49,17 @@ export class HousesListComponent implements OnInit {
     );
   }
 
+
   editHouse(houseId : string , index : number){
-    console.log(houseId,index);
+    this.housesService.getHouseById(houseId)
+    .subscribe(
+      (res:any) => {
+        console.log(res);    
+      },
+      err => {
+        console.log(err);
+      },
+    );
   }
 
   deleteHouseById(houseId : string , index : number){

@@ -3,6 +3,7 @@ import { CreateUserDto } from "../models/create-user.dto";
 import { InjectModel } from "@nestjs/mongoose";
 import { Injectable } from "@nestjs/common";
 import { Model } from 'mongoose';
+import { userGetterDto } from "../models/userGetterDto";
 
 @Injectable()
 export class DbUserService {
@@ -11,6 +12,15 @@ export class DbUserService {
     async getAllUser(): Promise<User[]> {
         const users = await this.userModel.find().exec();
         return users;
+    }
+
+    async getAllUserSmallerDto(): Promise<userGetterDto[]> {
+        const users = await this.userModel.find().exec();
+        let usersBodyDto : userGetterDto[] = []
+        users.forEach(user => {
+            usersBodyDto.push(new userGetterDto(user._id,user.username))
+        });
+        return usersBodyDto;
     }
     // Get a single user
     async getUser(userID): Promise<User> {

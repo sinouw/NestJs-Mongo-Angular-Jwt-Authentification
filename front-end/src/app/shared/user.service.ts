@@ -33,7 +33,6 @@ export class UserService {
       }
       else{
         confirmPswrdCtrl.setErrors(null);
-        console.log(fb.get('password').value == fb.get('ConfirmPassword').value);
       }
     }
 
@@ -45,7 +44,6 @@ export class UserService {
       password: this.formModel.value.Passwords.password,
       roles:["user"]
     };
-    console.log(body);
     return this.http.post(BaseURI + 'auth/register', body);
   }
 

@@ -1,0 +1,23 @@
+<!-- <mat-card *ngIf="type == 'info'"> -->
+<mat-card>
+    <h4> Enter House Information</h4>
+    <form [formGroup]="info">
+        <div class="example-container">
+            <mat-form-field class="w-100 mb-3">
+                <input matInput placeholder="Title" formControlName="title">
+                <mat-error *ngIf="info.get('title').hasError('required') && info.get('title').touched">This field should not be empty.</mat-error>
+            </mat-form-field>
+            <mat-form-field class="w-100 mb-3">
+                <input matInput placeholder="Description" formControlName="description">
+                <mat-error *ngIf="info.get('description').hasError('required') && info.get('description').touched">This field should not be empty.</mat-error>
+            </mat-form-field>
+            <!-- select owner -->
+
+            <button mat-raised-button color="dark" (click)="createHouse()" [disabled]="info.invalid">Save</button>
+        </div>
+        <!-- example-container -->
+    </form>
+
+
+
+</mat-card>

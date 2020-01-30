@@ -4,6 +4,7 @@ import { AuthGuard } from '../auth/guard/auth.guard';
 import { ProfileComponent } from './profile/profile.component';
 import { HousesComponent } from './houses/houses.component';
 import { ClientsComponent } from './clients/clients.component';
+import { HousesDetailsComponent } from './houses/houses-details/houses-details.component';
 
 
 

@@ -1,9 +1,9 @@
-<div class="container">
-    <mat-form-field>
-        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search">
-    </mat-form-field>
-</div>
 <mat-card>
+    <div class="container">
+        <mat-form-field>
+            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search">
+        </mat-form-field>
+    </div>
 
     <div class="table-responsive-x">
         <table mat-table [dataSource]="dataSource" class="w-100 table-scroll-wrap">
@@ -49,7 +49,5 @@
         </table>
     </div>
     <mat-paginator [pageSizeOptions]="[15, 30, 45, 60]"></mat-paginator>
-
-
     <!-- table-responsive -->
 </mat-card>

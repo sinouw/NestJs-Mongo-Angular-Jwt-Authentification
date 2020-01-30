@@ -18,16 +18,13 @@ export class HousesComponent implements OnInit {
   }
 
   selectComponent(componentName : string = this.selectedComp) : void {
-    console.log(componentName);
     
     if(componentName == "Houses List"){
       this.listCompSelected = true;
       this.selectedComp = componentName;
-      console.log(this.listCompSelected);
     }else{
       this.listCompSelected = false;
       this.selectedComp = componentName;
-      console.log(this.listCompSelected);
     }
     
   }

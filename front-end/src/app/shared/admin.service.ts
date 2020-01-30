@@ -13,4 +13,8 @@ export class AdminService {
   getHelloAdmin(){
     return this.http.get(BaseURI+'auth/gethello',{responseType: 'text'})
   }
+
+  getAllUsers(){
+    return this.http.get(BaseURI+'user/usersSmallerDto')
+  }
 }

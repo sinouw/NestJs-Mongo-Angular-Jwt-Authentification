@@ -33,7 +33,7 @@ export class AdminPanelComponent implements OnInit {
       this.compName=componentRoute.charAt(0).toUpperCase() + componentRoute.slice(1);
       //redirect to the component at the url
       this.router.navigate(['/adminpanel/'+componentRoute]);
-      console.log("redirected to : "+redirectUrl);
+
 
     }else{
       

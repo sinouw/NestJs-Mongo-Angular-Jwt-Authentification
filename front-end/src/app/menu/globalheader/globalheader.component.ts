@@ -13,7 +13,6 @@ export class GlobalheaderComponent implements OnInit {
 
   ngOnInit() {
     this.isAdmin = this.service.tokenExists()
-    console.log(this.isAdmin);
   }
 
   onAdmiProfile() {

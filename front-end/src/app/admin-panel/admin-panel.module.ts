@@ -31,10 +31,12 @@ import { HousesDetailsComponent } from './houses/houses-details/houses-details.c
 import { ClientsComponent } from './clients/clients.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HousesService } from './services/houses.service';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { AddHouseComponent } from './houses/add-house/add-house.component';
 
 
 @NgModule({
-  declarations: [AdminPanelComponent, HousesListComponent, HousesDetailsComponent, ProfileComponent, HousesComponent, ClientsComponent],
+  declarations: [AdminPanelComponent, HousesListComponent, HousesDetailsComponent, ProfileComponent, HousesComponent, ClientsComponent, AddHouseComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(AdminAccountRoutes),
@@ -57,7 +59,9 @@ import { HousesService } from './services/houses.service';
       MatPaginatorModule,
       MatCardModule,
       MenuModule,
-      HttpClientModule
+      HttpClientModule,
+      FormsModule,
+      ReactiveFormsModule,
   ],
   exports:[
     MatButtonModule,

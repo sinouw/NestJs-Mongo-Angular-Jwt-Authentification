@@ -8,8 +8,9 @@ import { AdminService } from 'src/app/shared/admin.service';
 })
 export class ClientsComponent implements OnInit {
   helloMessage: string;
+  UsersList: any = [];
 
-  constructor(private adminService : AdminService,) { }
+  constructor(private adminService : AdminService) { }
 
   ngOnInit() {
     this.getmessage()
@@ -23,6 +24,17 @@ export class ClientsComponent implements OnInit {
     err=>{
      console.log(err);
   })
+  }
+
+  getUsers(){
+    this.adminService.getAllUsers()
+    .subscribe((res : any)=>{
+      this.UsersList = res;
+      console.log(res);      
+    },
+    err=>{
+      console.log(err);
+    })
   }
 
 }

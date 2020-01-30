@@ -25,7 +25,6 @@ export class SideNavBarComponent implements OnInit {
     }
     
     SendCompName(comp): void {
-      // console.log(comp);
       this.selectedCompName=comp;
       
       this.sideBarService.SendCompName(comp)

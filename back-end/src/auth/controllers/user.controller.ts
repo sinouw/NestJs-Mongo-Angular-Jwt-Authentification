@@ -23,6 +23,12 @@ export class UserController {
         const users = await this.userService.getAllUser();
         return res.status(HttpStatus.OK).json(users);
     }
+    
+    @Get('usersSmallerDto')
+    async getAllUserSmallerDto(@Res() res) {
+        const users = await this.userService.getAllUserSmallerDto();
+        return res.status(HttpStatus.OK).json(users);
+    }
 
     // Fetch a particular user using ID
     @Get(':userID')
