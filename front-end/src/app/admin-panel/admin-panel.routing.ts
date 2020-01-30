@@ -2,8 +2,8 @@ import { Routes } from '@angular/router';
 import { AdminPanelComponent } from './admin-panel.component';
 import { AuthGuard } from '../auth/guard/auth.guard';
 import { ProfileComponent } from './profile/profile.component';
-import { HousesListComponent } from './houses-list/houses-list.component';
-import { HousesDetailsComponent } from './houses-details/houses-details.component';
+import { HousesComponent } from './houses/houses.component';
+
 
 
 export const AdminAccountRoutes: Routes = [
@@ -19,17 +19,10 @@ export const AdminAccountRoutes: Routes = [
          },
          { 
             path: 'houses', 
-            component: HousesListComponent,
+            component: HousesComponent,
             canActivate: [AuthGuard]
 
-         },
-         { 
-            path: 'houses/details', 
-            component: HousesDetailsComponent,
-            canActivate: [AuthGuard]
-
-         },
- 
+         }, 
       ]
 	}
 ];

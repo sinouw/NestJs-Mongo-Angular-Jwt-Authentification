@@ -12,7 +12,8 @@ import { SideNavBarService } from './side-nav-bar.service';
 export class SideNavBarComponent implements OnInit {
   navIsOpened: boolean=true;
   isAdmin: any;
-  menuItemsList : string[] =  ["Profile","Houses","Admin","Clients","Go to site"]
+  adminMenuItemsList : string[] =  ["Profile","Houses","Clients","Go to site"]
+  userMenuItemsList : string[] =  ["Profile","Houses","Go to site"]
   selectedCompName : string ="Profile"
 
   constructor(private router: Router,

@@ -21,16 +21,17 @@ import {
   MatCardModule
 } from '@angular/material';
 import { AdminPanelComponent } from './admin-panel.component';
-import { HousesListComponent } from './houses-list/houses-list.component';
-import { HousesDetailsComponent } from './houses-details/houses-details.component';
+import { HousesListComponent } from './houses/houses-list/houses-list.component';
 import { ProfileComponent } from './profile/profile.component';
 import { MenuModule } from '../menu/menu.module';
 import { RouterModule } from '@angular/router';
 import { AdminAccountRoutes } from './admin-panel.routing';
+import { HousesComponent } from './houses/houses.component';
+import { HousesDetailsComponent } from './houses/houses-details/houses-details.component';
 
 
 @NgModule({
-  declarations: [AdminPanelComponent, HousesListComponent, HousesDetailsComponent, ProfileComponent],
+  declarations: [AdminPanelComponent, HousesListComponent, HousesDetailsComponent, ProfileComponent, HousesComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(AdminAccountRoutes),
