@@ -18,7 +18,7 @@ export class DbUserService {
         const users = await this.userModel.find().exec();
         let usersBodyDto : userGetterDto[] = []
         users.forEach(user => {
-            usersBodyDto.push(new userGetterDto(user._id,user.username))
+            usersBodyDto.push(new userGetterDto(user._id,user.username,user.created_at))
         });
         return usersBodyDto;
     }

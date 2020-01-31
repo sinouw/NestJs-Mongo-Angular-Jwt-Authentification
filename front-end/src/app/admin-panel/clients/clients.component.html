@@ -1,3 +1,46 @@
-<p class="lead" *ngIf="isAdmin==true;else elsebloc">{{helloMessage}}. </p>
+<div class="row">
+    <p class="lead" *ngIf="isAdmin==true;else elsebloc">{{helloMessage}}. </p>
+</div>
+<mat-card>
+    <div class="container-fluid">
+        <mat-form-field class="col-6">
+            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search">
+        </mat-form-field>
+    </div>
 
-Helloo
+    <div class="table-responsive-x">
+        <table mat-table [dataSource]="dataSource" class="w-100 table-scroll-wrap">
+            <!-- Position Column -->
+            <ng-container matColumnDef="position">
+                <th mat-header-cell *matHeaderCellDef> No. </th>
+                <td mat-cell *matCellDef="let element;let i = index;"> {{i}} </td>
+            </ng-container>
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="username">
+                <th mat-header-cell *matHeaderCellDef> Username </th>
+                <td mat-cell *matCellDef="let element"> {{element?.username}} </td>
+            </ng-container>
+
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="created_at">
+                <th mat-header-cell *matHeaderCellDef> Creation Date </th>
+                <td mat-cell *matCellDef="let element"> {{element?.created_at | date : 'yyyy/mm/dd'}} </td>
+            </ng-container>
+            <!-- Actions Column -->
+            <ng-container matColumnDef="action">
+                <th class="px-3" mat-header-cell *matHeaderCellDef> Action </th>
+                <td class="px-3" mat-cell *matCellDef="let element;let i= index;">
+
+                    <button color="warn" mat-icon-button (click)="delteUserById(element._id,i)">
+                        <mat-icon class="">delete</mat-icon>
+                    </button>
+                </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </div>
+    <mat-paginator [pageSizeOptions]="[15, 30, 45, 60]"></mat-paginator>
+    <!-- table-responsive -->
+</mat-card>

@@ -17,4 +17,9 @@ export class AdminService {
   getAllUsers(){
     return this.http.get(BaseURI+'user/usersSmallerDto')
   }
+
+  deleteUserById(userId){
+    return this.http.delete(BaseURI+'user/delete/'+userId)
+  }
+
 }
