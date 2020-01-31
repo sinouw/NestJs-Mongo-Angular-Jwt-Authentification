@@ -4,19 +4,26 @@
 </div>
 <div class="row">
 
-    <mat-card *ngIf="userDetails" class="col-md-3">
-        <div><strong>User Details</strong></div>
-        <br>
-        <mat-divider></mat-divider>
-        <div style="padding-top:10px;">
-            <strong>Username : </strong>"{{userDetails?.username}}"
-        </div>
+    <div class="col-6">
+        <mat-card *ngIf="userDetails" class="col-md-3">
+            <div><strong>User Details</strong></div>
+            <br>
+            <mat-divider></mat-divider>
+            <div style="padding-top:10px;">
+                <strong>Username : </strong>"{{userDetails?.username}}"
+            </div>
 
-        <div style="padding-top:10px;">
-            <strong>Role : </strong>
-            <a *ngFor="let role of userDetails.roles">
-                "{{role}}"
-            </a>
-        </div>
-    </mat-card>
+            <div style="padding-top:10px;">
+                <strong>Role : </strong>
+                <a *ngFor="let role of userDetails.roles">
+                    "{{role}}"
+                </a>
+            </div>
+        </mat-card>
+    </div>
+
+    <div class="col-6">
+        <input type="file" class="btn " (change)="fileChangeEvent($event)" placeholder="Upload file..." />
+        <button type="button" class="btn btn-dark" (click)="upload()">Upload</button>
+    </div>
 </div>

@@ -73,7 +73,7 @@ export class UserController {
         })
     }
 
-    @Post(':userid/avatar')
+    @Post('avatar/:userid')
     @UseInterceptors(FileInterceptor('file',
       {
         storage: diskStorage({
@@ -88,8 +88,9 @@ export class UserController {
     async uploadAvatar(@Res() res,@Param('userid') userId, @UploadedFile() file) {
         const user = await this.userService.getUser(userId);
         if (!user) throw new NotFoundException('User does not exist!');
+        let useravatar = user.avatarUrl.split("\\")[1]
         let userBody = {
-            avatarUrl : `${SERVER_URL}${file.path}`
+            avatarUrl : `${useravatar}`
         }
         
         
@@ -103,9 +104,13 @@ export class UserController {
       });
     }
 
-    @Get('avatars/:fileId')
-    async serveAvatar(@Param('fileId') fileId, @Res() res): Promise<any> {
-      res.sendFile(fileId, { root: 'avatars'});
+    @Get('avatars/:userId')
+    async serveAvatar2(@Param('userId') userId, @Res() res): Promise<any> {
+        const user = await this.userService.getUser(userId);
+        if (!user) throw new NotFoundException('User does not exist!');
+     
+        res.sendFile(user.avatarUrl, { root: 'avatars'});
+        
     }
     
 

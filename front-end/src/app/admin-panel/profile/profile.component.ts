@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 })
 export class ProfileComponent implements OnInit {
   userDetails;
+  fileToUpload: File;
 
   constructor(private router: Router, private service: UserService) { }
 
@@ -24,4 +25,31 @@ export class ProfileComponent implements OnInit {
         },
       );
   }
+
+
+   async upload() {
+  const formData: any = new FormData();
+  const file: File = this.fileToUpload;
+
+  // formData.append('file', file);
+  // const res = await this.courseRep.upload(formData);
+    console.log("formdata : ",formData);
+    this.service.UploadImage(formData,this.userDetails.userId)
+    .subscribe(res=>{
+      console.log(res);
+    },
+    err=>{
+      console.error(err);
+      
+    })
+    
+}
+
+fileChangeEvent(fileInput: any) {
+  this.fileToUpload = <File>fileInput.target.files[0];
+  console.log("filesToUpload : ",this.fileToUpload);
+  
+}
+
+  
 }

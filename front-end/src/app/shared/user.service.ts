@@ -9,9 +9,7 @@ import * as jwt_decode from 'jwt-decode';
 })
 export class UserService {
   constructor(private fb: FormBuilder, private http: HttpClient) {
-   }
-
-  
+  }
 
   formModel = this.fb.group({
     username: ['', Validators.required],
@@ -22,27 +20,15 @@ export class UserService {
 
   });
 
-  comparePasswords(fb: FormGroup) {
-    let pass = fb.get('password');
-  let confirmPass = fb.get('confirmPass');
-
-    let confirmPswrdCtrl = fb.get('ConfirmPassword');
-    if (confirmPswrdCtrl.errors == null || 'passwordMismatch' in confirmPswrdCtrl.errors) {
-      if (fb.get('password').value != confirmPswrdCtrl.value){       
-        confirmPswrdCtrl.setErrors({ passwordMismatch: true });
-      }
-      else{
-        confirmPswrdCtrl.setErrors(null);
-      }
-    }
-
+  UploadImage(file : File,id : string) {
+    return this.http.post(BaseURI + 'user/avatar/'+id,file);
   }
 
-  register() {    
+  register() {
     var body = {
       username: this.formModel.value.username,
       password: this.formModel.value.Passwords.password,
-      roles:["user"]
+      roles: ["user"]
     };
     return this.http.post(BaseURI + 'auth/register', body);
   }
@@ -52,23 +38,33 @@ export class UserService {
   }
 
   getUserProfile() {
-    // return this.http.get(BaseURI + 'auth/getusers');
     return this.http.get(BaseURI + 'auth/profile');
   }
 
-   tokenExists() : boolean{
-    let token = localStorage.getItem('token'); 
-     if (token == null || token == undefined) {
-       return false
-     }
-     else{
-        return true
-     }
-  } 
+  tokenExists(): boolean {
+    let token = localStorage.getItem('token');
+    if (token == null || token == undefined) {
+      return false
+    }
+    else {
+      return true
+    }
+  }
 
-  getDecodedToken(){
-    let token = localStorage.getItem('token'); 
+  getDecodedToken() {
+    let token = localStorage.getItem('token');
     return jwt_decode(token);
   }
 
+  comparePasswords(fb: FormGroup) {
+    let confirmPswrdCtrl = fb.get('ConfirmPassword');
+    if (confirmPswrdCtrl.errors == null || 'passwordMismatch' in confirmPswrdCtrl.errors) {
+      if (fb.get('password').value != confirmPswrdCtrl.value) {
+        confirmPswrdCtrl.setErrors({ passwordMismatch: true });
+      }
+      else {
+        confirmPswrdCtrl.setErrors(null);
+      }
+    }
+  }
 }
