@@ -7,7 +7,6 @@ import { HousesController } from './houses.controller';
 @Module({
   imports : [
     MongooseModule.forFeature([{ name: 'House', schema: HouseSchema }]),
-
   ],
   providers: [HousesService],
   controllers: [HousesController]

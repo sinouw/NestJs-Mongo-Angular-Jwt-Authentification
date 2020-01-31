@@ -6,7 +6,7 @@ import { UseInterceptors,  UploadedFile } from  '@nestjs/common';
 import { FileInterceptor } from  '@nestjs/platform-express';
 import { diskStorage } from  'multer';
 import { extname } from  'path';
-import { SERVER_URL } from 'src/models/BaseUrl.data';
+import { SERVER_URL } from 'src/Data/BaseUrl.data';
 
 @Controller('user')
 export class UserController {
