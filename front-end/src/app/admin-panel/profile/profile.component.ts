@@ -31,8 +31,7 @@ export class ProfileComponent implements OnInit {
   const formData: any = new FormData();
   const file: File = this.fileToUpload;
 
-  // formData.append('file', file);
-  // const res = await this.courseRep.upload(formData);
+  formData.append('file', file);
     console.log("formdata : ",formData);
     this.service.UploadImage(formData,this.userDetails.userId)
     .subscribe(res=>{
