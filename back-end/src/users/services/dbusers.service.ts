@@ -40,7 +40,7 @@ export class DbUserService {
         return newUser.save();
     }
     // Edit user details
-    async updateUser(userID, createUserDTO: CreateUserDto): Promise<User> {
+    async updateUser(userID, createUserDTO: any): Promise<User> {
         const updatedUser = await this.userModel
             .findByIdAndUpdate(userID, createUserDTO, { new: true });
         return updatedUser;

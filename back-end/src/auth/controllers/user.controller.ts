@@ -85,8 +85,22 @@ export class UserController {
         })
       }
     ))
-    uploadAvatar(@Param('userid') userId, @UploadedFile() file) {
-      this.userService.setAvatar(Number(userId), `${SERVER_URL}${file.path}`);
+    async uploadAvatar(@Res() res,@Param('userid') userId, @UploadedFile() file) {
+        const user = await this.userService.getUser(userId);
+        if (!user) throw new NotFoundException('User does not exist!');
+        let userBody = {
+            avatarUrl : `${SERVER_URL}${file.path}`
+        }
+        
+        
+        this.userService.updateUser(userId,userBody);
+        console.log(user);
+        // this.userService.setAvatar(userId, `${SERVER_URL}${file.path}`);
+        
+        return res.status(HttpStatus.OK).json({
+          message: 'User has been successfully updated',
+          user
+      });
     }
 
     @Get('avatars/:fileId')
