@@ -5,7 +5,7 @@
 <div class="row">
 
     <div class="col-6">
-        <mat-card *ngIf="userDetails" class="col-md-3">
+        <mat-card *ngIf="userDetails" class="col-md-6">
             <div><strong>User Details</strong></div>
             <br>
             <mat-divider></mat-divider>
@@ -23,7 +23,12 @@
     </div>
 
     <div class="col-6">
+        <div><strong>User Image</strong></div>
+        <br>
+        <mat-divider></mat-divider>
+        <img width="100%" height="100%" *ngIf="userImage" [src]="userImage" alt="">
         <input type="file" class="btn " (change)="fileChangeEvent($event)" placeholder="Upload file..." />
         <button type="button" class="btn btn-dark" (click)="upload()">Upload</button>
     </div>
+
 </div>

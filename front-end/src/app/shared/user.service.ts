@@ -24,6 +24,14 @@ export class UserService {
     return this.http.post(BaseURI + 'user/avatar/'+id,file);
   }
 
+  GetImage(id : string) {
+    return this.http.get(BaseURI + 'user/avatars/'+id,{responseType: 'text'});
+  }
+
+  GetImageUrl(id : string) {
+    return this.http.get(BaseURI + 'user/avatars/url/'+id);
+  }
+
   register() {
     var body = {
       username: this.formModel.value.username,

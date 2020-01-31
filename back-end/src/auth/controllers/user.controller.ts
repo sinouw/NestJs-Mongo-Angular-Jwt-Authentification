@@ -88,6 +88,9 @@ export class UserController {
     async uploadAvatar(@Res() res,@Param('userid') userId, @UploadedFile() file) {
         const user = await this.userService.getUser(userId);
         if (!user) throw new NotFoundException('User does not exist!');
+       
+        let originalpath = SERVER_URL+file.path
+        console.log();
         
         let useravatar = file.path.split("\\")[1]
         console.log(useravatar);
@@ -101,19 +104,26 @@ export class UserController {
         
         return res.status(HttpStatus.OK).json({
           message: 'User has been successfully updated',
-          user
+          originalpath
       });
     }
 
     @Get('avatars/:userId')
+    async serveAvatar(@Param('userId') userId, @Res() res): Promise<any> {
+        const user = await this.userService.getUser(userId);
+        if (!user) throw new NotFoundException('User does not exist!');
+        res.sendFile(user.avatarUrl, { root: 'avatars'});
+
+    }
+
+    @Get('avatars/url/:userId')
     async serveAvatar2(@Param('userId') userId, @Res() res): Promise<any> {
         const user = await this.userService.getUser(userId);
         if (!user) throw new NotFoundException('User does not exist!');
-     
-        res.sendFile(user.avatarUrl, { root: 'avatars'});
+        let x =`${SERVER_URL}`+"avatars/"+user.avatarUrl; 
+        console.log(x);
         
+        return res.status(HttpStatus.OK).json(x);
+
     }
-    
-
-
 }
