@@ -51,9 +51,4 @@ export class HousesDetailsComponent implements OnInit {
     })
   }
 
-
-  ngOnDestroy() {
-    // unsubscribe to ensure no memory leaks
-    this.subscription.unsubscribe();
-  }
 }

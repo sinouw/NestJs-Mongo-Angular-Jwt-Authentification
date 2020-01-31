@@ -33,7 +33,7 @@ export class HousesComponent implements OnInit {
 
   selectComponent(componentName : string = this.selectedComp) : void {
       this.selectedComp = componentName;
-      // this.ngOnDestroy()
+
       console.log(componentName);
        
   }

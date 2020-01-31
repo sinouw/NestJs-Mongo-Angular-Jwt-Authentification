@@ -59,28 +59,17 @@ export class AdminPanelComponent implements OnInit {
 
     let currentRoles =this.service.getDecodedToken().roles;
     this.isAdmin = currentRoles.some(role => currentRoles.includes("admin"));
-    if (this.isAdmin) {
-      this.getmessage()
-    }
+    
   }
    
   ngOnInit() {
-  //  this.getmessage()
+
   }
+
   ngOnDestroy() {
     // unsubscribe to ensure no memory leaks
     this.subscription.unsubscribe();
     }
-
-  getmessage(){
-    this.adminService.getHelloAdmin()
-    .subscribe(res=>{
-      this.helloMessage = res;
-    },
-    err=>{
-     console.log(err);
-  })
-  }
 
   RouterGoHome(){
     this.router.navigate(['/home']);

@@ -19,6 +19,6 @@
         <app-add-house></app-add-house>
     </div>
     <div *ngIf="selectedComp=='House Details'">
-        <app-houses-details [house]=houseDetails></app-houses-details>
+        <app-houses-details [house]=houseDetails *ngIf="houseDetails != 'undefined'"></app-houses-details>
     </div>
 </ng-template>
