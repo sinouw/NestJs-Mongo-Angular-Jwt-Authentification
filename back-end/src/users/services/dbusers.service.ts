@@ -51,4 +51,8 @@ export class DbUserService {
         return deletedUser;
     }
 
+    public async setAvatar(userId: number, avatarUrl: string){
+        this.userModel.update(userId, {avatar: avatarUrl});
+    }
+
 }

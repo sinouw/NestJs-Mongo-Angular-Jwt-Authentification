@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { HousesService } from './houses.service';
+import { HousesService } from './services/houses.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { HouseSchema } from './models/house-schema';
 import { HousesController } from './houses.controller';

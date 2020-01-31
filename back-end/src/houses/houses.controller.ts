@@ -1,5 +1,5 @@
 import { Controller, Get, Res, HttpStatus, Post, Body, Put, Query, NotFoundException, Delete, Param } from '@nestjs/common';
-import { HousesService } from './houses.service';
+import { HousesService } from './services/houses.service';
 import { CreateHouseDto } from './models/create-house-dto';
 
 

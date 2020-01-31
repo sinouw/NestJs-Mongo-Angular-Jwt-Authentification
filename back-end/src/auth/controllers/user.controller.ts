@@ -1,7 +1,12 @@
-import { Controller, Get, Res, HttpStatus, Post, Body, Put, Query, NotFoundException, Delete, Param } from '@nestjs/common';
+import { Controller, Get, Res, HttpStatus, Post, Body, Put, NotFoundException, Delete, Param } from '@nestjs/common';
 
 import { DbUserService } from '../../users/services/dbusers.service';
 import { CreateUserDto } from '../../users/models/create-user.dto';
+import { UseInterceptors,  UploadedFile } from  '@nestjs/common';
+import { FileInterceptor } from  '@nestjs/platform-express';
+import { diskStorage } from  'multer';
+import { extname } from  'path';
+import { SERVER_URL } from 'src/models/BaseUrl.data';
 
 @Controller('user')
 export class UserController {
@@ -67,5 +72,28 @@ export class UserController {
             user
         })
     }
+
+    @Post(':userid/avatar')
+    @UseInterceptors(FileInterceptor('file',
+      {
+        storage: diskStorage({
+          destination: './avatars', 
+          filename: (req, file, cb) => {
+          const randomName = Array(32).fill(null).map(() => (Math.round(Math.random() * 16)).toString(16)).join('')
+          return cb(null, `${randomName}${extname(file.originalname)}`)
+        }
+        })
+      }
+    ))
+    uploadAvatar(@Param('userid') userId, @UploadedFile() file) {
+      this.userService.setAvatar(Number(userId), `${SERVER_URL}${file.path}`);
+    }
+
+    @Get('avatars/:fileId')
+    async serveAvatar(@Param('fileId') fileId, @Res() res): Promise<any> {
+      res.sendFile(fileId, { root: 'avatars'});
+    }
+    
+
 
 }
