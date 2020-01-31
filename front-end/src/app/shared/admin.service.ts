@@ -17,6 +17,22 @@ export class AdminService {
   getAllUsers(){
     return this.http.get(BaseURI+'user/usersSmallerDto')
   }
+  
+  getUserById(id : string){
+    return this.http.get(BaseURI+'user/'+id)
+  }
+
+  userExists(id : string){
+    return this.http.get(BaseURI+'user/check/'+id)
+  }
+
+  createNewUser(user){
+    return this.http.post(BaseURI+'user/create',user)
+  }
+
+  editUserById(id : string , user ){
+    return this.http.put(BaseURI+'user/update/'+id,user)
+  }
 
   deleteUserById(userId){
     return this.http.delete(BaseURI+'user/delete/'+userId)
