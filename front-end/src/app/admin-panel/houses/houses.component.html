@@ -7,13 +7,18 @@
 </div>
 <div class="row">
     <div class="col-12">
-        <div *ngIf="listCompSelected;else houseDetails">
+        <div *ngIf="selectedComp=='Houses List';else houseDetailsBloc;">
             <app-houses-list></app-houses-list>
         </div>
 
     </div>
 
 </div>
-<ng-template #houseDetails>
-    <app-add-house></app-add-house>
+<ng-template #houseDetailsBloc>
+    <div *ngIf="selectedComp=='Add House'">
+        <app-add-house></app-add-house>
+    </div>
+    <div *ngIf="selectedComp=='House Details'">
+        <app-houses-details [house]=houseDetails></app-houses-details>
+    </div>
 </ng-template>

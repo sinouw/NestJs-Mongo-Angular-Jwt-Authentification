@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BaseURI } from 'src/app/models/BaseURI.model';
 import { CreateHouseDto } from 'src/app/models/create-house-dto';
+import { Subject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -26,12 +27,27 @@ export class HousesService {
     return this.http.post(BaseURI+'houses/create',house)
   }
 
-  editHouseById(id : string , house : CreateHouseDto){
-    return this.http.post(BaseURI+'houses/update/'+id,house)
+  editHouseById(id : string , house ){
+    return this.http.put(BaseURI+'houses/update/'+id,house)
   }
 
   deleteHouseById(id : string){
     return this.http.delete(BaseURI+'houses/delete/'+id)
+  }
+
+
+  private subject = new Subject<any>();
+ 
+  SendHouseSubcription(houseBody) {
+  this.subject.next(houseBody);
+  }
+  
+  clearHouseSubcription() {
+  this.subject.next();
+  }
+  
+  getHouseSubcription(): Observable<any>{
+  return this.subject.asObservable();
   }
 
 }

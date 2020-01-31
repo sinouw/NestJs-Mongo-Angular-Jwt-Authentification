@@ -4,6 +4,7 @@ import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
 import { CreateHouseDto } from 'src/app/models/create-house-dto';
 import { HttpClient } from '@angular/common/http';
 import { BaseURI } from 'src/app/models/BaseURI.model';
+import { SideNavBarService } from 'src/app/menu/side-nav-bar/side-nav-bar.service';
 
 
 
@@ -18,7 +19,8 @@ export class HousesListComponent implements OnInit {
   buttonItems: string[] = ["Houses List", "Add House"]
 
   constructor(private housesService: HousesService,
-    private http: HttpClient) { }
+
+    ) { }
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: false }) sort: MatSort;
   dataSource = new MatTableDataSource();
@@ -54,7 +56,7 @@ export class HousesListComponent implements OnInit {
     this.housesService.getHouseById(houseId)
       .subscribe(
         (res: any) => {
-          console.log(res);
+          this.SendHouseSubcription(res);
         },
         err => {
           console.log(err);
@@ -75,7 +77,15 @@ export class HousesListComponent implements OnInit {
           console.log(err);
         },
       );
+  }
 
+  SendHouseSubcription(house): void {    
+    this.housesService.SendHouseSubcription(house)
+  }
+      
+  clearHouseSubcription(): void {
+    // clear cart
+    this.housesService.clearHouseSubcription();
   }
 
 }

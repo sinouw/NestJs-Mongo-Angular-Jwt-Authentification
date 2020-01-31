@@ -1,15 +1,16 @@
 <p class="lead">Hello, Mr {{userDetails?.username}}.</p>
-<div class="container">
-    <div class="card m-5" style="width:18rem" *ngIf="userDetails">
-        <ul class="list-group">
-            <li class="list-group-item"><strong>Username : </strong>"{{userDetails?.username}}"</li>
-            <li class="list-group-item"><strong>Role : </strong>
-                <a *ngFor="let role of userDetails.roles">
-                    "{{role}}"
-                </a>
-            </li>
-
-        </ul>
+<mat-card *ngIf="userDetails" class="col-md-3">
+    <div><strong>User Details</strong></div>
+    <br>
+    <mat-divider></mat-divider>
+    <div style="padding-top:10px;">
+        <strong>Username : </strong>"{{userDetails?.username}}"
     </div>
 
-</div>
+    <div style="padding-top:10px;">
+        <strong>Role : </strong>
+        <a *ngFor="let role of userDetails.roles">
+            "{{role}}"
+        </a>
+    </div>
+</mat-card>

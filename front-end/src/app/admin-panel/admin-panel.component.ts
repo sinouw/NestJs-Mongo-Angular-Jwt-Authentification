@@ -23,7 +23,7 @@ export class AdminPanelComponent implements OnInit {
     private sideBarService: SideNavBarService,
     private router : Router,
     private service: UserService,
-    private route: ActivatedRoute) 
+    ) 
   {
     
     let redirectUrl : string = (this.router.url).split("/")[2]
