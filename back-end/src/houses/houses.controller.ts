@@ -24,6 +24,13 @@ export class HousesController {
         return res.status(HttpStatus.OK).json(houses);
     }
 
+    // Retrieve houses list
+    @Get('getByUserId/:userID')
+    async getHousesByUserId(@Res() res, @Param('userID') userID) {
+        const houses = await this.houseService.getHousesByUserId(userID);
+        return res.status(HttpStatus.OK).json(houses);
+    }
+
     // Fetch a particular house using ID
     @Get(':houseID')
     async getHouse(@Res() res, @Param('houseID') houseID) {

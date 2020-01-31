@@ -13,6 +13,13 @@ export class HousesService {
         const houses = await this.houseModel.find().exec();
         return houses;
     }
+
+    // fetch houses by userId
+    async getHousesByUserId(userId : string): Promise<House[]> {
+        const houses = await this.houseModel.find({ owner : userId}).select().exec();
+        return houses;
+    }
+    
     // Get a single house
     async getHouse(houseID): Promise<House> {
         const house = await this.houseModel.findById(houseID).exec();

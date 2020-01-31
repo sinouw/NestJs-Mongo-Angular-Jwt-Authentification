@@ -15,6 +15,10 @@ export class HousesService {
     return this.http.get(BaseURI+'houses/getAll')
   }
 
+  getHousesByUserId(userId){
+    return this.http.get(BaseURI+'houses/getByUserId/'+userId)
+  }
+
   getHouseById(id : string){
     return this.http.get(BaseURI+'houses/'+id)
   }

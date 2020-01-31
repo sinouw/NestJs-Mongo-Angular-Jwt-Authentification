@@ -61,7 +61,7 @@ export class ClientsComponent implements OnInit {
       .subscribe(
         (res: any) => {
           console.log(res);
-          this.toastr.success('New house created!', 'House Added successfully.');
+          this.toastr.info('Client Suppression !', 'Client deleted successfully.');
           this.dataSource.data.splice(index, 1);
           this.dataSource = new MatTableDataSource(this.dataSource.data);
           this.dataSource.paginator = this.paginator;

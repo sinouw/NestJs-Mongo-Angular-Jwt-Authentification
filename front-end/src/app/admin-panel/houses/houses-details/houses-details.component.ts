@@ -44,7 +44,7 @@ export class HousesDetailsComponent implements OnInit {
     this.housesService.editHouseById(this.house._id,this.info.value)
     .subscribe(res=>{
       console.log(res);
-      this.toastr.success('House Edition!', 'House edited successfully.');
+      this.toastr.info('House Edition!', 'House edited successfully.');
     },
     err=>{
       console.log(err);
