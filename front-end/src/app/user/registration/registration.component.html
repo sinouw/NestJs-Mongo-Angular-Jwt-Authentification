@@ -22,6 +22,11 @@
             <label class="text-danger" *ngIf="service.formModel.get('Passwords.ConfirmPassword').touched && service.formModel.get('Passwords.ConfirmPassword').errors?.passwordMismatch">Confirm
         Password does not match.</label>
         </div>
+
+        <mat-button-toggle-group name="fontStyle" aria-label="Font Style" class="form-group required" #roleCheck (click)="changeRole($event)">
+            <mat-button-toggle value="user" checked>User</mat-button-toggle>
+            <mat-button-toggle value="admin">Admin</mat-button-toggle>
+        </mat-button-toggle-group>
     </div>
     <div class="form-row">
         <div class="form-group col-md-8 offset-md-2">

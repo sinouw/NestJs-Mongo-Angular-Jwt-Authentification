@@ -32,7 +32,7 @@ export class UserService {
     return this.http.get(BaseURI + 'user/avatars/url/'+id);
   }
 
-  register() {
+  registerForUser() {
     var body = {
       username: this.formModel.value.username,
       password: this.formModel.value.Passwords.password,
@@ -40,6 +40,16 @@ export class UserService {
     };
     return this.http.post(BaseURI + 'auth/register', body);
   }
+  
+  registerForAdmin() {
+    var body = {
+      username: this.formModel.value.username,
+      password: this.formModel.value.Passwords.password,
+      roles: ["admin"]
+    };
+    return this.http.post(BaseURI + 'auth/register', body);
+  }
+  
 
   login(formData) {
     return this.http.post(BaseURI + 'auth/login', formData)

@@ -16,7 +16,7 @@ import { MenuModule } from './menu/menu.module';
 import { NotfoundComponent } from './extra/notfound/notfound.component';
 import { MyHomeComponent } from './my-home/my-home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,6 +32,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
+    MatButtonToggleModule,
     BrowserAnimationsModule, // required animations module,
     ToastrModule.forRoot({
       progressBar: true

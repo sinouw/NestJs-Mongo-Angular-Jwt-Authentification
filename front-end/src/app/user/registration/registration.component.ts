@@ -9,14 +9,23 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class RegistrationComponent implements OnInit {
 
+  role : string ="user"
+
   constructor(public service: UserService, private toastr: ToastrService) { }
 
   ngOnInit() {
     this.service.formModel.reset();
   }
 
+  changeRole(event){
+    this.role = event.target.innerText;    
+  }
+
   onSubmit() {
-    this.service.register()
+    
+    
+    if (this.role =="user") {
+       this.service.registerForUser()
     .subscribe(
       (res: any) => {
           this.service.formModel.reset();
@@ -26,6 +35,19 @@ export class RegistrationComponent implements OnInit {
         console.log(err);
       }
     );
+    } else {
+       this.service.registerForAdmin()
+    .subscribe(
+      (res: any) => {
+          this.service.formModel.reset();
+          this.toastr.success('New admin created!', 'Registration successful.');
+      },
+      err => {
+        console.log(err);
+      }
+    );
+    }
+
   }
 
 }
